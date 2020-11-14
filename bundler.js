@@ -7,7 +7,7 @@ const { performance } = require('perf_hooks');
 	[
 		{
 			bundleNo = 0,
-			size: total size in MB,
+			size: total size in bytes,
 			files: [{ path: 'path/to/file.png', size: 420 }],
 		},
 	]
