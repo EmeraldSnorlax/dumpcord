@@ -20,7 +20,8 @@ function bundle() {
 		The file limit per message is 8MB
 		Iterate through the files, and put them into bundles
 		that do not exceed 8MB total.
-		Lazy bundler, only will try and bundle files that are adjacent.
+      Lazy bundler, only will try and bundle files that are adjacent.
+      There is a limit of 10 attatchments per message.
 	*/
 	var bundles = [
 		{
@@ -44,12 +45,12 @@ function bundle() {
 			l.log(file.path, 'error');
 			l.log((file.size / 1000000).toFixed(2) + 'MB', 'error');
 			process.exit(1);
-		} else if (file.size + currentBundleSize < config.maxBundleSize) {
+		} else if ((file.size + currentBundleSize < config.maxBundleSize) && ((bundles[currentBundleIndex].files.length - 1) < 9)) {
 			// Case 1: The file is small enough to be added to the current bundle. We add to this bundle.
 			currentBundleSize += file.size;
 			bundles[currentBundleIndex].files.push(file);
 		} else {
-			// Case 2: The file is too big to fit in the current bundle. We create a new bundle.
+			// Case 2: The file is too big to fit in the current bundle, or max number of images reached. We create a new bundle.
 			currentBundleIndex++;
 			currentBundleSize = 0 + file.size;
 			bundles.push({

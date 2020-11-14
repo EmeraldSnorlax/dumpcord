@@ -24,9 +24,6 @@ client.on('ready', () => {
 		channel.send(i, {
 			files: files
 		})
-			.then(() => {
-				l.log(`Queued bundle ${i + 2} of ${bundles.length - 1}`, 'info');
-			})
 			.catch(err => {
 				l.log(`Something failed with bundle ${i + 1} (index ${i}!)`, 'warn');
 				l.log(err, 'debug');
@@ -43,7 +40,7 @@ client.on('ready', () => {
 
 client.on('message', msg => {
 	if (msg.author.id == client.user.id) {
-		l.log(`Uploaded ${Number(msg.content) + 1} of ${finalBundle}`, 'success');
+		
 		if (msg.content == finalBundle) {
 			l.log('Finished uploading.', 'success');
 			msg.channel.send(l.profile(start));
@@ -51,6 +48,8 @@ client.on('message', msg => {
 				process.exit(0);
 			}, 5000);
 
+		} else {
+			l.log(`Uploaded ${Number(msg.content) + 1} of ${finalBundle}`, 'success');
 		}
 	} 
 });
