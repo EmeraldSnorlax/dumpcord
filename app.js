@@ -55,6 +55,11 @@ client.on('message', msg => {
 });
 
 
-
-
 client.login(config.token);
+
+console.log(`
+   Dumpcord - Copyright (C) 2020 EmeraldSnorlax
+   This program comes with ABSOLUTELY NO WARRANTY 
+   This is free software, and you are welcome to redistribute it
+   under the GNU GPLv3 license.
+`);
