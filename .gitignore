@@ -1,3 +1,6 @@
+# maybe dont push token to gitlab
+config.js
+
 # Logs
 logs
 *.log
