@@ -1,6 +1,8 @@
 Dumpcord
 ===
 
+> Imported from GitLab. https://gitlab.com/EmeraldSnorlax/dumpcord
+
 # Running
 ---
 
